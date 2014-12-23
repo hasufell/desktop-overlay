@@ -17,6 +17,7 @@ KEYWORDS=""
 IUSE=""
 
 RDEPEND="
+	dev-libs/glib:2
 	x11-libs/gtk+:2
 	xfce-base/exo
 	xfce-base/garcon
