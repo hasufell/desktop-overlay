@@ -1,10 +1,11 @@
-# Copyright 2014 Julian Ospald <hasufell@posteo.de>
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
 VALA_USE_DEPEND="vapigen"
+VALA_MIN_API_VERSION="0.30"
 
 inherit eutils autotools gnome2-utils vala vcs-snapshot
 
@@ -18,12 +19,12 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+applet gnome vala"
 
 CDEPEND="
-	dev-util/appdata-tools
-	>=dev-libs/glib-2.40:2
-	>=dev-libs/gobject-introspection-1.42.0
+	dev-libs/appstream-glib
+	>=dev-libs/glib-2.46:2
+	>=dev-libs/gobject-introspection-1.44.0
 	sys-apps/dbus
 	>=x11-libs/gdk-pixbuf-2.26:2
-	>=x11-libs/gtk+-3.12:3
+	>=x11-libs/gtk+-3.16:3
 	x11-libs/libX11
 	x11-libs/libXi
 	gnome? (
@@ -60,7 +61,8 @@ src_configure() {
 		--disable-unity \
 		$(use_enable gnome gnome-shell-extension) \
 		--disable-static \
-		--disable-schemas-compile
+		--disable-schemas-compile \
+		--enable-legacy-cli
 }
 
 src_install() {
